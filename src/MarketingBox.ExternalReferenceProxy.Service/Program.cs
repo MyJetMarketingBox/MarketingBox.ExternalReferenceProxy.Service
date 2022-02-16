@@ -14,7 +14,7 @@ namespace MarketingBox.ExternalReferenceProxy.Service
 {
     public class Program
     {
-        public const string SettingsFileName = ".marketingBoxexternalreferenceproxyservice";
+        public const string SettingsFileName = ".marketingboxexternalreferenceproxyservice";
 
         public static SettingsModel Settings { get; private set; }
 

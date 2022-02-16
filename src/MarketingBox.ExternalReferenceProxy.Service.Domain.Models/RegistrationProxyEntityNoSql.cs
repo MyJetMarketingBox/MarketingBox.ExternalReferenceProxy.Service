@@ -5,7 +5,7 @@ namespace MarketingBox.ExternalReferenceProxy.Service.Domain.Models
     public class RegistrationProxyEntityNoSql : MyNoSqlDbEntity
     {
         public const string TableName = "marketingbox-registrationproxy-entity";
-        private static string GeneratePartitionKey(string token) => $"token:{token}";
+        public static string GeneratePartitionKey(string token) => $"token:{token}";
         private static string GenerateRowKey() => "registrationproxy";
         
         public RegistrationProxyEntity Entity { get; set; }
