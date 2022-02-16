@@ -11,7 +11,7 @@ namespace MarketingBox.ExternalReferenceProxy.Service.Client
         {
             var factory = new ExternalReferenceProxyServiceClientFactory(grpcServiceUrl);
 
-            builder.RegisterInstance(factory.GetHelloService()).As<IHelloService>().SingleInstance();
+            builder.RegisterInstance(factory.GetHelloService()).As<IExternalReferenceProxyService>().SingleInstance();
         }
     }
 }

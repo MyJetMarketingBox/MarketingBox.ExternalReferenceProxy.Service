@@ -5,9 +5,9 @@ using MarketingBox.ExternalReferenceProxy.Service.Grpc.Models;
 namespace MarketingBox.ExternalReferenceProxy.Service.Grpc
 {
     [ServiceContract]
-    public interface IHelloService
+    public interface IExternalReferenceProxyService
     {
         [OperationContract]
-        Task<HelloMessage> SayHelloAsync(HelloRequest request);
+        Task<GetProxyRefResponse> GetProxyRefAsync(GetProxyRefRequest request);
     }
 }

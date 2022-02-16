@@ -11,6 +11,6 @@ namespace MarketingBox.ExternalReferenceProxy.Service.Client
         {
         }
 
-        public IHelloService GetHelloService() => CreateGrpcService<IHelloService>();
+        public IExternalReferenceProxyService GetHelloService() => CreateGrpcService<IExternalReferenceProxyService>();
     }
 }

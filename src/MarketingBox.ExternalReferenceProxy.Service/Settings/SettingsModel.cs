@@ -5,13 +5,25 @@ namespace MarketingBox.ExternalReferenceProxy.Service.Settings
 {
     public class SettingsModel
     {
-        [YamlProperty("ExternalReferenceProxy.Service.SeqServiceUrl")]
+        [YamlProperty("ExternalReferenceProxyService.SeqServiceUrl")]
         public string SeqServiceUrl { get; set; }
 
-        [YamlProperty("ExternalReferenceProxy.Service.ZipkinUrl")]
+        [YamlProperty("ExternalReferenceProxyService.ZipkinUrl")]
         public string ZipkinUrl { get; set; }
 
-        [YamlProperty("ExternalReferenceProxy.Service.ElkLogs")]
+        [YamlProperty("ExternalReferenceProxyService.ElkLogs")]
         public LogElkSettings ElkLogs { get; set; }
+        
+        [YamlProperty("ExternalReferenceProxyService.ExternalReferenceProxyApiUrl")]
+        public string ExternalReferenceProxyApiUrl { get; set; }
+
+        [YamlProperty("ExternalReferenceProxyService.ExternalReferenceProxyApiUrlPath")]
+        public string ExternalReferenceProxyApiUrlPath { get; set; }
+
+        [YamlProperty("ExternalReferenceProxyService.ProxyLinkLifetimeInHours")]
+        public int ProxyLinkLifetimeInHours { get; set; }
+
+        [YamlProperty("ExternalReferenceProxyService.MyNoSqlWriterUrl")]
+        public string MyNoSqlWriterUrl { get; set; }
     }
 }
