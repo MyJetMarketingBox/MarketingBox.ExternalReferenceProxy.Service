@@ -1,6 +1,7 @@
 using System.ServiceModel;
 using System.Threading.Tasks;
 using MarketingBox.ExternalReferenceProxy.Service.Grpc.Models;
+using MarketingBox.Sdk.Common.Models.Grpc;
 
 namespace MarketingBox.ExternalReferenceProxy.Service.Grpc
 {
@@ -8,6 +9,6 @@ namespace MarketingBox.ExternalReferenceProxy.Service.Grpc
     public interface IExternalReferenceProxyService
     {
         [OperationContract]
-        Task<GetProxyRefResponse> GetProxyRefAsync(GetProxyRefRequest request);
+        Task<Response<string>> GetProxyRefAsync(GetProxyRefRequest request);
     }
 }

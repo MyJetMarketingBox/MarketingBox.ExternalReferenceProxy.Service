@@ -4,6 +4,9 @@ using MarketingBox.ExternalReferenceProxy.Service.Engine;
 using Microsoft.Extensions.Logging;
 using MarketingBox.ExternalReferenceProxy.Service.Grpc;
 using MarketingBox.ExternalReferenceProxy.Service.Grpc.Models;
+using MarketingBox.Sdk.Common.Extensions;
+using MarketingBox.Sdk.Common.Models.Grpc;
+using MyJetWallet.Sdk.Service;
 using Newtonsoft.Json;
 
 namespace MarketingBox.ExternalReferenceProxy.Service.Services
@@ -20,7 +23,7 @@ namespace MarketingBox.ExternalReferenceProxy.Service.Services
             _externalReferenceProxyEngine = externalReferenceProxyEngine;
         }
 
-        public async Task<GetProxyRefResponse> GetProxyRefAsync(GetProxyRefRequest request)
+        public async Task<Response<string>> GetProxyRefAsync(GetProxyRefRequest request)
         {
             _logger.LogInformation($"ExternalReferenceProxyService.GetProxyRefAsync reveive request : {JsonConvert.SerializeObject(request)}");
             try
@@ -28,19 +31,16 @@ namespace MarketingBox.ExternalReferenceProxy.Service.Services
                 var proxyLink = await _externalReferenceProxyEngine
                     .GetProxyRefAsync(request.BrandLink, request.RegistrationId, request.RegistrationUId, request.TenantId);
 
-                return new GetProxyRefResponse()
+                return new Response<string>
                 {
-                    Success = true,
-                    ProxyLink = proxyLink
+                    Data = proxyLink,
+                    Status = ResponseStatus.Ok
                 };
             }
             catch (Exception ex)
             {
-                return new GetProxyRefResponse()
-                {
-                    Success = false,
-                    ErrorMessage = ex.Message
-                };
+                _logger.LogError(ex, ex.Message);
+                return ex.FailedResponse<string>();
             }
         }
     }
