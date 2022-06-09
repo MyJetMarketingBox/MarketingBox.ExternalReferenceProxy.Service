@@ -14,7 +14,7 @@ namespace MarketingBox.ExternalReferenceProxy.Service
 {
     public class Program
     {
-        public const string SettingsFileName = ".marketingBoxexternalreferenceproxyservice";
+        public const string SettingsFileName = ".marketingboxexternalreferenceproxyservice";
 
         public static SettingsModel Settings { get; private set; }
 
@@ -36,7 +36,7 @@ namespace MarketingBox.ExternalReferenceProxy.Service
 
             Settings = SettingsReader.GetSettings<SettingsModel>(SettingsFileName);
 
-            using var loggerFactory = LogConfigurator.ConfigureElk("MarketingBox", Settings.SeqServiceUrl, Settings.ElkLogs);
+            using var loggerFactory = LogConfigurator.ConfigureElk_v2("MarketingBox", Settings.SeqServiceUrl, Settings.ElkLogs);
 
             var logger = loggerFactory.CreateLogger<Program>();
 
